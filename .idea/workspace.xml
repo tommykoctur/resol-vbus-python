@@ -265,10 +265,10 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.config" />
       <item itemvalue="Python.dict_test" />
-      <item itemvalue="Python.resol" />
       <item itemvalue="Python.test" />
+      <item itemvalue="Python.resol" />
+      <item itemvalue="Python.config" />
     </list>
     <recent_temporary>
       <list>
