@@ -64,7 +64,7 @@ def read_stream(sock):
     data = bytearray(b'')
     data.extend(receive(sock))
     while data.count(0xAA) < 4:
-        data.extend(recv())
+        data.extend(receive(sock))
     return data
 
 
