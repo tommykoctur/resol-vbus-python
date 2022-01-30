@@ -26,9 +26,9 @@ except Exception as e:
     sys.exit(f"Could not load Message Specification, {e}")
 
 
-def load_data(result):
+def load_data(result, sock):
     while len(result) < config.expected_packets:
-        buf = read_stream()
+        buf = read_stream(sock)
         msgs = split_msg(buf)
 
         if config.debug:
@@ -60,9 +60,9 @@ def receive():
 # '0xaa' '0x15' '0x00' '0x21' '0x74' '0x10' ...
 # '0xaa' '0x10' '0x00' '0x21' '0x74' '0x10' ...
 # Only the last one is needed, so we need 4 times '0xaa'!
-def read_stream():
+def read_stream(sock):
     data = bytearray(b'')
-    data.extend(receive())
+    data.extend(receive(sock))
     while data.count(0xAA) < 4:
         data.extend(recv())
     return data

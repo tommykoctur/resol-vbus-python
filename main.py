@@ -13,7 +13,7 @@ if __name__ == '__main__':
         sys.exit('Unknown connection type. Please check config.')
 
     result = dict()
-    load_data(result)
+    load_data(result, sock)
 
     print(json.dumps(result))
 
