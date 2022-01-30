@@ -47,7 +47,7 @@ def load_data(result, sock):
 
 
 # Receive 1024 bytes from stream
-def receive():
+def receive(sock):
     # timeout needs to be set to 0 (see init), or it will
     # block until the requested number of bytes is read
     dat = sock.read(1024)
