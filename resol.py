@@ -26,7 +26,7 @@ except Exception as e:
     sys.exit(f"Could not load Message Specification, {e}")
 
 
-def load_data():
+def load_data(result):
     while len(result) < config.expected_packets:
         buf = read_stream()
         msgs = split_msg(buf)
@@ -224,28 +224,3 @@ def gb(data, begin, end):  # GetBytes
     return s
 
 
-if __name__ == '__main__':
-    if config.connection == "serial":
-        sock = serial.Serial(config.port, baudrate=config.baud_rate, timeout=0)
-    elif config.connection == "lan":
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.connect(config.address)
-        login()
-    elif config.connection == "stdin":
-        sock = sys.stdin
-    else:
-        sys.exit('Unknown connection type. Please check config.')
-
-    result = dict()
-    load_data()
-
-    print(json.dumps(result))
-
-    if config.connection == "lan":
-        try:
-            sock.shutdown(0)
-        except Exception as e:
-            print(e)
-            pass
-    sock.close()
-    sock = None
