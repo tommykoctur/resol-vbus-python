@@ -11,7 +11,7 @@ vbus_pass = "vbus"
 
 # only used for "serial"
 port = "/dev/serial0"
-baudrate = 9600
+baud_rate = 9600
 
 spec_file = os.path.dirname(__file__) + '/spec/DeltaSolBS2009.json'
 # expected amount of different source packets (see spec_file)
